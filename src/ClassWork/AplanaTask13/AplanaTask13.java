@@ -4,54 +4,42 @@ import java.util.Scanner;
 
 public class AplanaTask13 {
 
-    static Scanner scanner = new Scanner(System.in);
     static int num1;
     static int num2;
+    static char operation;
 
     public static void main(String[] args) {
-        num1 = getInt();
-        num2 = getInt();
-        getOperation();
-    }
 
-    public static int getInt(){
-        System.out.println("Введите число:");
-        int num;
-        if(scanner.hasNextInt()){
-            num = scanner.nextInt();
-        } else {
-            System.out.println("Вы допустили ошибку при вводе числа. Попробуйте еще раз.");
-            scanner.next();
-            num = getInt();
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        String[] strArr = s.split(" ");
+        operation = strArr[0].charAt(0);
+        try {
+            num1 = Integer.parseInt(strArr[1]);
+            num2 = Integer.parseInt(strArr[2]);
+        }catch (Exception e){
+            System.out.println("Введите целочисленное значение");
+            System.exit(0);
         }
-        return num;
-    }
+        calc(operation);
 
-    public static void getOperation(){
-        System.out.println("Введите операцию:");
-        char operation;
-        if(scanner.hasNext()){
-            operation = scanner.next().charAt(0);
-            if (operation == '/'){
-                if (num2 == 0){
-                    System.out.println("Делить на ноль нельзя");
-                }
-                else
+    }
+    public static void calc(char operation) {
+        if (operation == '/'){
+            if (num2 == 0){
+                System.out.println("Делить на ноль нельзя");
+            }
+            else
                 div(num1, num2);
-            }
-            if (operation == '*'){
-                mul(num1, num2);
-            }
-            if (operation == '+'){
-                sum(num1, num2);
-            }
-            if (operation == '-'){
-                dif(num1, num2);
-            }
-        } else {
-            System.out.println("Вы допустили ошибку при вводе операции. Попробуйте еще раз.");
-            scanner.next();
-            getOperation();
+        }
+        if (operation == '*'){
+            mul(num1, num2);
+        }
+        if (operation == '+'){
+            sum(num1, num2);
+        }
+        if (operation == '-'){
+            dif(num1, num2);
         }
     }
 
@@ -68,4 +56,5 @@ public class AplanaTask13 {
         System.out.println("Результат операции: " + (num1-num2));
     }
 }
+
 
