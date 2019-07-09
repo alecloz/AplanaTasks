@@ -14,9 +14,13 @@ public class AplanaTask2 {
         for (int i = 0; i < 2; i++) {
             s += alphabet.charAt(r.nextInt(alphabet.length()));
         }
-        s += 1;
-        for (int i = 0; i < 3; i++) {
-            s += (int) (Math.random() * 2);
+        int random = (int) (Math.random() * 4); //узнаем под каким индексом далее будет точно сгенерирована еденица
+        for (int i = 0; i < 4; i++) {
+            if (random == i) {
+                s += 1;
+            } else {
+                s += (int) (Math.random() * 2);
+            }
         }
         System.out.println(s);
     }
