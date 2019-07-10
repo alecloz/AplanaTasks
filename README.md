@@ -1,2 +1,2 @@
 # AplanaTasks
-Первая домашка Aplana
+Домашка по коллекциям в папке src/HomeWorkCollections
