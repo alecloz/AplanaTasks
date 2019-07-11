@@ -37,6 +37,10 @@ public class TaskCollections2 {
         MyComparatorValue myComparatorValue = new MyComparatorValue();
         readFile();
         String line = String.valueOf(stringBuilder);
+        if (line.equals("")){
+            System.out.println("Файл пустой");
+            System.exit(0);
+        }
         fillingList(line);
         list.sort(myComparatorKey);
         deleteDublicates();
@@ -50,7 +54,7 @@ public class TaskCollections2 {
     }
     static public void readFile() {
         try {
-            File file = new File("D:/test/file.txt");
+            File file = new File("file.txt");
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 

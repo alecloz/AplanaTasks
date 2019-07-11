@@ -15,6 +15,10 @@ public class TaskCollections1 {
     public static void main(String[] args) {
         readFile();
         String line = String.valueOf(stringBuilder);
+        if (line.equals("")){
+            System.out.println("Файл пустой");
+            System.exit(0);
+        }
         System.out.println("Слова отсортированные по алфавиту + сколько раз они встречаются в тексте:");
         printFullList(line);
         System.out.println("\nНаиболее часто встречающиеся слова:");
@@ -23,7 +27,7 @@ public class TaskCollections1 {
     }
     public static void readFile(){
         try {
-            File file = new File("D:/test/file.txt");
+            File file = new File("file.txt");
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
