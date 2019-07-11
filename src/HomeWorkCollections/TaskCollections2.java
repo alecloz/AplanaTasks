@@ -9,8 +9,8 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class TaskCollections2 {
-    String key;
-    int value;
+    private String key;
+    private int value;
     static ArrayList<TaskCollections2> list = new ArrayList<>();
     static StringBuilder stringBuilder = new StringBuilder();
     static int symbol;
