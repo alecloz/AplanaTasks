@@ -8,9 +8,9 @@ import java.util.stream.Stream;
 
 public class TaskCollections1 {
 
-    static long count = 0;
-    static int symbol;
-    static StringBuilder stringBuilder = new StringBuilder();
+    private static long count = 0;
+    private static StringBuilder stringBuilder = new StringBuilder();
+    private static String fileName = "file.txt";
 
     public static void main(String[] args) {
         readFile();
@@ -25,12 +25,12 @@ public class TaskCollections1 {
         printMaxValuesOfList(line);
 
     }
-    public static void readFile(){
+    private static void readFile(){
         try {
-            File file = new File("file.txt");
+            File file = new File(fileName);
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-
+            int symbol;
             while ((symbol = bufferedReader.read()) != -1) {
                 stringBuilder.append((char) symbol);
             }
@@ -39,19 +39,17 @@ public class TaskCollections1 {
             e.printStackTrace();
         }
     }
-    public static void printFullList(String line){
+    private static void printFullList(String line){
         Stream.of(line.split("[^A-Za-zА-Яа-я0-9]+"))
-                .map(String::toLowerCase)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
                 .entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByKey())
                 .forEach(System.out::println);
     }
-    public static void printMaxValuesOfList(String line){
+    private static void printMaxValuesOfList(String line){
         Map<String, Long> map;
         map = Stream.of(line.split("[^A-Za-zА-Яа-я0-9]+"))
-                .map(String::toLowerCase)
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
         for (Map.Entry<String, Long> m : map.entrySet()) {
             if (m.getValue() > count) {
@@ -65,7 +63,7 @@ public class TaskCollections1 {
         }
     }
 }
-//
+
 
 
 
